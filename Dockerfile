@@ -6,9 +6,10 @@ WORKDIR /app
 
 # Copy the project files to the container
 COPY . .
+COPY .env .
 
 # Install project dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Set the command to run your script or application
-CMD ["python -m", "src.main"]
+CMD ["python", "-m", "dotenv", "-f", ".env", "src.main"]
